@@ -1,9 +1,5 @@
 # Jobster API
 
-#### Starter
-
-The starter is a copy of jobs-api final project, just with additional data.
-
 #### Setup
 
 - install dependencies
@@ -24,23 +20,7 @@ JWT_LIFETIME=
 
 ```sh
 npm start
-```
 
-- you should see "Server is listening ...." text
-
-#### Spring Cleaning
-
-##### Remove Swagger
-
-- delete swagger.yaml file
-- remove these lines of code
-- delete swagger.yaml
-  app.js
-
-```js
-const swaggerUI = require('swagger-ui-express');
-const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./swagger.yaml');
 
 app.get('/', (req, res) => {
   res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
@@ -323,22 +303,10 @@ jobType: {
 
 - default property just for fun, values will be provided by front-end
 
-#### Setup Mock Data
-
-- [Mockaroo](https://www.mockaroo.com/)
-- create mock-data.json (root)
-- provide test user id
-
-#### Populate DB
-
-- create populate.js
-
-populate.js
 
 ```js
 require('dotenv').config();
 
-const mockData = require('./mock-data.json');
 
 const Job = require('./models/Job');
 const connectDB = require('./db/connect');
@@ -428,7 +396,7 @@ const getAllJobs = async (req, res) => {
 middleware/authentication.js
 
 ```js
-const payload = jwt.verify(token, process.env.JWT_SECRET);
+const payload = jwt.verify(token, process.env.JWT_SECRET_KEY);
 const testUser = payload.userId === '62eff8bcdb9af70b4155349d';
 req.user = { userId: payload.userId, testUser };
 ```
@@ -581,10 +549,7 @@ controllers/jobs
 ```js
 const mongoose = require('mongoose');
 const moment = require('moment');
-```
 
-- [Javascript Nuggets - Reduce Basics](https://youtu.be/3WkW9nrS2mw)
-- [Javascript Nuggets - Reduce (object example)](https://youtu.be/5BFkp8JjLEY)
 
 controllers/jobs
 
@@ -669,6 +634,4 @@ monthlyApplications = monthlyApplications
   }
 ```
 
-- fix build folder (remove /build from client/.gitignore)
-- setup new github repo
-- deploy to render
+
